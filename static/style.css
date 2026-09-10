@@ -1,0 +1,547 @@
+/* ========================================
+   RiskMatrix v2.9.1 - Stylesheet
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Cores corporativas */
+    --primary-dark: #1e3a5f;
+    --primary-light: #2563eb;
+    --accent: #059669;
+    --danger: #dc2626;
+    --warning: #f59e0b;
+    --success: #10b981;
+    
+    /* Grays */
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --border: #e5e7eb;
+    --bg-light: #f9fafb;
+    --bg-white: #ffffff;
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    
+    /* Font */
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif;
+    --font-mono: 'Monaco', 'Courier New', monospace;
+}
+
+/* ========================================
+   Global Styles
+   ======================================== */
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-primary);
+    background-color: var(--bg-light);
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* ========================================
+   Header
+   ======================================== */
+
+.header {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
+    color: white;
+    padding: var(--spacing-xl) var(--spacing-lg);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-xs);
+}
+
+.header .subtitle {
+    font-size: 1.1rem;
+    opacity: 0.95;
+    margin-bottom: var(--spacing-xs);
+}
+
+.header .version {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* ========================================
+   Main Content
+   ======================================== */
+
+.main-content {
+    flex: 1;
+    padding: var(--spacing-xl) var(--spacing-lg);
+}
+
+.upload-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.info-section {
+    margin-top: var(--spacing-xl);
+}
+
+/* ========================================
+   Card Component
+   ======================================== */
+
+.card {
+    background: var(--bg-white);
+    border-radius: 12px;
+    padding: var(--spacing-lg);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: var(--spacing-lg);
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--primary-dark);
+}
+
+.card h3 {
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-primary);
+}
+
+.card h4 {
+    font-size: 1rem;
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* ========================================
+   Form Styles
+   ======================================== */
+
+.instructions {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-md);
+    font-size: 1rem;
+}
+
+.form-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.label-text {
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+.label-hint {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    margin-top: 0.25rem;
+}
+
+.file-input {
+    display: block;
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 2px dashed var(--border);
+    border-radius: 8px;
+    background-color: var(--bg-light);
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.file-input:hover {
+    border-color: var(--primary-light);
+    background-color: #f0f4ff;
+}
+
+.file-input:focus {
+    outline: none;
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.file-name {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    padding: var(--spacing-sm);
+    background-color: var(--bg-light);
+    border-radius: 6px;
+}
+
+/* ========================================
+   Button Styles
+   ======================================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.btn-primary {
+    background-color: var(--primary-light);
+    color: white;
+    width: 100%;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.btn-primary:active {
+    transform: scale(0.98);
+}
+
+.btn-primary:disabled {
+    background-color: var(--text-secondary);
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.btn-success {
+    background-color: var(--success);
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #059669;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.btn-icon {
+    display: inline-block;
+}
+
+/* ========================================
+   Loading State
+   ======================================== */
+
+.loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl);
+    gap: var(--spacing-md);
+}
+
+.loading.hidden {
+    display: none;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid var(--border);
+    border-top-color: var(--primary-light);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.loading p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+/* ========================================
+   Message States
+   ======================================== */
+
+.error-message,
+.success-message {
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    margin-bottom: var(--spacing-md);
+}
+
+.error-message {
+    background-color: #fee;
+    border-left: 4px solid var(--danger);
+    color: var(--danger);
+    display: none;
+}
+
+.error-message.hidden {
+    display: none;
+}
+
+.success-message {
+    background-color: #efe;
+    border-left: 4px solid var(--success);
+    color: var(--success);
+    display: none;
+}
+
+.success-message.hidden {
+    display: none;
+}
+
+.success-message h3 {
+    color: var(--success);
+    margin-bottom: var(--spacing-md);
+    font-size: 1.1rem;
+}
+
+/* ========================================
+   Stats Box
+   ======================================== */
+
+.stats-box {
+    background-color: var(--bg-light);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+    margin-bottom: var(--spacing-md);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+}
+
+.stat-item {
+    text-align: center;
+    padding: var(--spacing-sm);
+}
+
+.stat-label {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-light);
+}
+
+/* ========================================
+   Info Grid
+   ======================================== */
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.info-box {
+    padding: var(--spacing-md);
+    background-color: var(--bg-light);
+    border-radius: 8px;
+    border-left: 4px solid var(--primary-light);
+}
+
+.info-box h3 {
+    margin-bottom: var(--spacing-sm);
+    color: var(--primary-dark);
+}
+
+.info-box p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* ========================================
+   Methodology
+   ======================================== */
+
+.methodology {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.method-step {
+    display: flex;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background-color: var(--bg-light);
+    border-radius: 8px;
+}
+
+.step-number {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-light);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.step-content h4 {
+    margin-bottom: 0.5rem;
+}
+
+/* ========================================
+   Format Info
+   ======================================== */
+
+.format-info {
+    background-color: var(--bg-light);
+    padding: var(--spacing-md);
+    border-radius: 8px;
+}
+
+.format-info h4 {
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+}
+
+.format-info h4:first-child {
+    margin-top: 0;
+}
+
+.format-info ul {
+    margin-left: var(--spacing-lg);
+    color: var(--text-secondary);
+}
+
+.format-info li {
+    margin-bottom: 0.5rem;
+}
+
+.format-info strong {
+    color: var(--text-primary);
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+
+.footer {
+    background-color: var(--primary-dark);
+    color: white;
+    text-align: center;
+    padding: var(--spacing-lg);
+    margin-top: auto;
+    font-size: 0.9rem;
+}
+
+.footer p {
+    margin-bottom: 0.5rem;
+}
+
+.footer-note {
+    opacity: 0.8;
+    font-size: 0.85rem;
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .header {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+    
+    .main-content {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+    
+    .card {
+        padding: var(--spacing-md);
+    }
+    
+    .btn {
+        font-size: 0.95rem;
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+    
+    .info-grid,
+    .methodology {
+        grid-template-columns: 1fr;
+    }
+    
+    .stats-box {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    :root {
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 1.5rem;
+    }
+    
+    .header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .card h2 {
+        font-size: 1.2rem;
+    }
+    
+    .method-step {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
