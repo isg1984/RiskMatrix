@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RiskMatrix v2.9.1 - Análise de Riscos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>RiskMatrix</h1>
+                <p class="subtitle">Análise e cruzamento de riscos operacionais e estratégicos</p>
+                <p class="version">v2.9.1 | COSO ERM & ISO 31000</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Upload Section -->
+            <section class="upload-section">
+                <div class="card">
+                    <h2>Processar Matriz de Riscos</h2>
+                    <p class="instructions">Faça upload de dois arquivos Excel:</p>
+                    
+                    <form id="uploadForm" enctype="multipart/form-data">
+                        <!-- Matrix File Input -->
+                        <div class="form-group">
+                            <label for="matrixFile">
+                                <span class="label-text">1. Matriz de Riscos e Controles</span>
+                                <span class="label-hint">(arquivo .xlsx com controles)</span>
+                            </label>
+                            <input 
+                                type="file" 
+                                id="matrixFile" 
+                                name="matrix_file" 
+                                accept=".xlsx,.xls" 
+                                required
+                                class="file-input"
+                            >
+                            <div class="file-name" id="matrixFileName">Nenhum arquivo selecionado</div>
+                        </div>
+
+                        <!-- Catalog File Input -->
+                        <div class="form-group">
+                            <label for="catalogFile">
+                                <span class="label-text">2. Catálogo de Riscos Estratégicos</span>
+                                <span class="label-hint">(arquivo .xlsx com 29 riscos)</span>
+                            </label>
+                            <input 
+                                type="file" 
+                                id="catalogFile" 
+                                name="catalog_file" 
+                                accept=".xlsx,.xls" 
+                                required
+                                class="file-input"
+                            >
+                            <div class="file-name" id="catalogFileName">Nenhum arquivo selecionado</div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary" id="submitBtn">
+                            <span class="btn-text">Processar Arquivos</span>
+                            <span class="btn-icon">→</span>
+                        </button>
+                    </form>
+
+                    <!-- Loading State -->
+                    <div id="loading" class="loading hidden">
+                        <div class="spinner"></div>
+                        <p>Processando sua matriz de riscos...</p>
+                    </div>
+
+                    <!-- Error State -->
+                    <div id="errorMessage" class="error-message hidden"></div>
+
+                    <!-- Success State -->
+                    <div id="successMessage" class="success-message hidden">
+                        <h3>✓ Análise concluída com sucesso!</h3>
+                        <div id="successStats" class="stats-box"></div>
+                        <a id="downloadBtn" class="btn btn-success" href="#">Baixar Resultado (Excel)</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Info Section -->
+            <section class="info-section">
+                <div class="card">
+                    <h2>Como funciona</h2>
+                    <div class="info-grid">
+                        <div class="info-box">
+                            <h3>📊 Cruzamento Automático</h3>
+                            <p>Compara controles operacionais contra 29 riscos estratégicos usando análise textual e NLP.</p>
+                        </div>
+                        <div class="info-box">
+                            <h3>🔍 Análise Discriminante</h3>
+                            <p>Utiliza palavras-chave discriminantes e termos de exclusão para evitar falsos positivos.</p>
+                        </div>
+                        <div class="info-box">
+                            <h3>📈 Relatórios Estruturados</h3>
+                            <p>Gera Excel com matriz anotada, heatmap de exposição e relatório de auditoria.</p>
+                        </div>
+                        <div class="info-box">
+                            <h3>✓ Conformidade Regulatória</h3>
+                            <p>Alinhado com COSO ERM e ISO 31000 para governança e compliance.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Methodology -->
+                <div class="card">
+                    <h2>Metodologia</h2>
+                    <div class="methodology">
+                        <div class="method-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Pass 1: Literal Matching</h4>
+                                <p>Busca por palavras-chave discriminantes e aplicação de regras de exclusão.</p>
+                            </div>
+                        </div>
+                        <div class="method-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Pass 2: Flexible Matching</h4>
+                                <p>TF-IDF word similarity, token overlap e análise de correlações indiretas.</p>
+                            </div>
+                        </div>
+                        <div class="method-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Calibração Contínua</h4>
+                                <p>Ajustes iterativos baseados em feedback de especialistas em risco.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- File Format -->
+                <div class="card">
+                    <h2>Formato dos Arquivos</h2>
+                    <div class="format-info">
+                        <h4>Matriz de Riscos e Controles:</h4>
+                        <ul>
+                            <li>Primeira coluna: Nome do controle</li>
+                            <li>Colunas seguintes: Descrição, categoria, responsável, etc</li>
+                            <li>Formatação livre (o sistema analisa todo o conteúdo)</li>
+                        </ul>
+                        
+                        <h4>Catálogo de Riscos Estratégicos:</h4>
+                        <ul>
+                            <li><strong>Coluna A:</strong> Nome do risco estratégico</li>
+                            <li><strong>Coluna G:</strong> Palavras-chave discriminantes (separadas por ;)</li>
+                            <li><strong>Coluna H:</strong> Termos de exclusão (separadas por ;)</li>
+                            <li><strong>Colunas I-L:</strong> Controles típicos, referências normativas, natureza do risco</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>RiskMatrix v2.9.1 | Compliance & Due Diligence | COSO ERM & ISO 31000</p>
+            <p class="footer-note">Desenvolvido com metodologias de análise de risco corporativo</p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
